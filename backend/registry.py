@@ -54,3 +54,26 @@ MODELS["LSTM Sine Predictor"] = {
         "learning": "models/timeseries/learning.md"
     }
 }
+
+
+MODELS["GRU Language Model (WikiText-2)"] = {
+    "type": "language",
+    "model_path": "models/language_modeling/gru/model.pt",
+    "tokenizer": "models/language_modeling/tokenizer.json",
+    "sequence_length": 60,
+    "docs": {
+        "info": "models/language_modeling/info.md",
+        "learning": "models/language_modeling/learning.md"
+    }
+}
+
+MODELS["LSTM Language Model (WikiText-2)"] = {
+    "type": "language",
+    "model_path": "models/language_modeling/lstm/model.pt",
+    "tokenizer": "models/language_modeling/tokenizer.json",
+    "sequence_length": 60,
+    "docs": {
+        "info": "models/language_modeling/info.md",
+        "learning": "models/language_modeling/learning.md"
+    }
+}

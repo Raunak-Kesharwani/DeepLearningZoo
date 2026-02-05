@@ -9,6 +9,7 @@ import streamlit as st
 from frontend.components.sidebar import model_selector
 from frontend.pages.image_page import render_image_page
 from frontend.pages.timeseries_page import render_timeseries_page
+from frontend.pages.language_model_page import render_language_model_page
 from backend.registry import MODELS
 
 st.set_page_config(
@@ -30,6 +31,9 @@ else:
 
     elif model_cfg["type"] == "timeseries":
         render_timeseries_page(selected_model)
+
+    elif model_cfg["type"] == "language":
+        render_language_model_page(selected_model)
 
     else:
         st.warning("Model type not supported yet.")
