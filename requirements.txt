@@ -1,0 +1,19 @@
+
+# PyTorch (CPU only – Streamlit Cloud friendly)
+torch==2.2.2
+torchvision==0.17.2
+
+# UI
+streamlit==1.31.1
+
+# NLP
+tokenizers==0.15.2
+
+# Numerical & data
+numpy==1.26.4
+
+# Image handling
+Pillow==10.2.0
+
+# Plotting (used in time-series visualization)
+matplotlib==3.8.3
