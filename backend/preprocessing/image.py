@@ -14,3 +14,21 @@ def preprocess_lenet_mnist(image: Image.Image) -> torch.Tensor:
     Returns tensor of shape (1, 32, 32)
     """
     return MNIST_TRANSFORM(image)
+
+
+CIFAR10_TRANSFORM = transforms.Compose([
+    transforms.Resize((32, 32)),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=(0.485, 0.456, 0.406),
+        std=(0.229, 0.224, 0.225),
+    )
+])
+
+def preprocess_vgg_cifar10(image: Image.Image) -> torch.Tensor:
+    """
+    Returns tensor of shape (3, 32, 32)
+    """
+    if image.mode != "RGB":
+        image = image.convert("RGB")
+    return CIFAR10_TRANSFORM(image)

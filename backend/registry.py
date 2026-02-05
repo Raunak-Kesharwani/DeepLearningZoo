@@ -12,3 +12,20 @@ MODELS = {
     }
 }
 
+
+MODELS["VGG_CNN (CIFAR-10)"] = {
+    "type": "image",
+    "model_path": "models/image/vgg_cnn_cifar10/model.pt",
+    "preprocess": "preprocess_vgg_cifar10",
+    "input_shape": (3, 32, 32),
+    "classes": [
+        "airplane", "automobile", "bird", "cat", "deer",
+        "dog", "frog", "horse", "ship", "truck"
+    ],
+    "docs": {
+        "info": "models/image/vgg_cnn_cifar10/info.md",
+        "learning": "models/image/vgg_cnn_cifar10/learning.md"
+    }
+}
+
+
