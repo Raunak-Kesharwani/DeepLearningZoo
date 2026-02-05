@@ -66,3 +66,61 @@ def generate_text_lm(
             token_ids = token_ids[-60:]
 
     return tokenizer.decode(token_ids)
+
+
+
+
+
+def generate_answer_seq2seq(
+    model,
+    tokenizer,
+    question: str,
+    context: str,
+    max_len: int = 40,
+):
+    """
+    Generic inference for Seq2Seq QA (with or without attention)
+
+    model: TorchScript Seq2Seq model
+    tokenizer: tokenizers.Tokenizer
+    question: question string
+    context: context string
+    """
+
+    model.eval()
+
+    # ---- Special tokens ----
+    pad_id = tokenizer.token_to_id("<pad>")
+    sos_id = tokenizer.token_to_id("<sos>")
+    eos_id = tokenizer.token_to_id("<eos>")
+
+    # ---- Build encoder input ----
+    # IMPORTANT: must match training format
+    enc_text = question + " " + context
+    enc_ids = tokenizer.encode(enc_text).ids
+
+    enc_x = torch.tensor(enc_ids, dtype=torch.long).unsqueeze(0)
+
+    # ---- Decoder starts with <sos> ----
+    dec_ids = [sos_id]
+
+    with torch.no_grad():
+        for _ in range(max_len):
+            dec_x = torch.tensor(dec_ids, dtype=torch.long).unsqueeze(0)
+
+            # Forward pass
+            logits = model(enc_x, dec_x)
+
+            # Take last timestep
+            next_token_logits = logits[0, -1]
+            next_token_id = next_token_logits.argmax().item()
+
+            if next_token_id == eos_id:
+                break
+
+            dec_ids.append(next_token_id)
+
+    # Remove <sos>
+    answer_ids = dec_ids[1:]
+
+    return tokenizer.decode(answer_ids)

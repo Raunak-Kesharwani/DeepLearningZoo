@@ -77,3 +77,25 @@ MODELS["LSTM Language Model (WikiText-2)"] = {
         "learning": "models/language_modeling/learning.md"
     }
 }
+
+
+
+MODELS["Seq2Seq QA (No Attention)"] = {
+    "type": "qa",
+    "model_path": "models/question_answering/seq2seq_no_attention/model.pt",
+    "tokenizer": "models/question_answering/seq2seq_no_attention/tokenizer.json",
+    "docs": {
+        "info": "models/question_answering/seq2seq_no_attention/info.md",
+        "learning": "models/question_answering/seq2seq_no_attention/learning.md"
+    }
+}
+
+# MODELS["Seq2Seq QA (With Attention)"] = {
+#     "type": "qa",
+#     "model_path": "models/question_answering/seq2seq_attention/model.pt",
+#     "tokenizer": "models/question_answering/seq2seq_attention/tokenizer.json",
+#     "docs": {
+#         "info": "models/question_answering/seq2seq_attention/info.md",
+#         "learning": "models/question_answering/seq2seq_attention/learning.md"
+#     }
+# }
