@@ -20,3 +20,17 @@ def infer_image_classifier(model, image_tensor, class_names):
             for i in range(len(class_names))
         }
     }
+
+
+
+def infer_lstm_timeseries(model, sequence_tensor):
+    """
+    sequence_tensor: torch.Tensor of shape (1, 20, 1)
+    Returns a float prediction (next timestep)
+    """
+    model.eval()
+
+    with torch.no_grad():
+        output = model(sequence_tensor)   # (1, 1)
+
+    return output.item()

@@ -28,4 +28,29 @@ MODELS["VGG_CNN (CIFAR-10)"] = {
     }
 }
 
+MODELS["Resnet_Tuned(CIFAR-10)"] = {
+    "type": "image",
+    "model_path": "models/image/resnet_cifar10_224/model.pt",
+    "preprocess": "preprocess_cifar10_224",
+    "input_shape": (3, 224, 224),
+    "classes": [
+        "airplane", "automobile", "bird", "cat", "deer",
+        "dog", "frog", "horse", "ship", "truck"
+    ],
+    "docs": {
+        "info": "models/image/resnet_cifar10_224/info.md",
+        "learning": "models/image/resnet_cifar10_224/learning.md"
+    }
+}
 
+MODELS["LSTM Sine Predictor"] = {
+    "type": "timeseries",
+    "model_path": "models/timeseries/model.pt",
+    "input_length": 20,
+    "input_shape": (20, 1),
+    "output": "next_value",
+    "docs": {
+        "info": "models/timeseries/info.md",
+        "learning": "models/timeseries/learning.md"
+    }
+}
